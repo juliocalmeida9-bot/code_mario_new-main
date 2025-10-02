@@ -354,36 +354,51 @@ function escolhaPersonagem(personagem) {
         case 'mario':
             marioGifPath = './_media/mario.gif';
             gameOverImagePath = `./_imagens/morte/game-over-mario.png`;
+            gameBoard.style.backgroundImage = "url('_imagens/fundo-mario.jpg')"
+            mario.style.width = '150px';
             break;
         case 'sonic':
             marioGifPath = './_media/sonic.gif';
-            gameOverImagePath = `./_imagens/morte/game-over-sonic.png`;
+            gameOverImagePath = `./_imagens/morte/game-over-mario.png`;
+            gameBoard.style.backgroundImage = "url('_imagens/fundo_sonic.jpg')"
+            mario.style.width = '150px';
             break;
         case 'megaman':
             marioGifPath = './_media/yd6sCid.gif';
-            gameOverImagePath = `./_imagens/morte/game-over-megaman.png`;
+            gameOverImagePath = `./_imagens/morte/game-over-mario.png`;
+            gameBoard.style.backgroundImage = "url('_imagens/fundo_isadora.png')"
+            mario.style.width = '200px';
             break;
-        case 'link':
+            case 'link':
             marioGifPath = './_media/link.gif';
-            gameOverImagePath = `./_imagens/morte/game-over-link.png`;
+            gameOverImagePath = `./_imagens/morte/game-over-mario.png`;
+            gameBoard.style.backgroundImage = "url('_imagens/fundo_isadora.png')"
+            mario.style.width = '300px';
             break;
         case 'goku':
             marioGifPath = './_media/goku.gif';
-            gameOverImagePath = `./_imagens/morte/game-over-goku.png`;
+            gameOverImagePath = `./_imagens/morte/game-over-mario.png`;
+            mario.style.width = '250px';
+            gameBoard.style.backgroundImage = "url('_imagens/fundo_isadora.png')"
             break;
         case 'jotaro':
             marioGifPath = './_media/jotaroA.gif';
-            gameOverImagePath = `./_imagens/morte/game-over-jotaro.gif`;
+            gameOverImagePath = `./_imagens/morte/game-over-mario.png`;
+            gameBoard.style.backgroundImage = "url('_imagens/cenario-jotaro.webp')"
+            mario.style.width = '150px';
             break;
         case 'hollow':
             marioGifPath = './_media/hollow.gif';
-            gameOverImagePath = `./_imagens/morte/game-over-hollow.png`;
-            mudarDirecao = true;
+            gameOverImagePath = `./_imagens/morte/game-over-mario.png`;
+            mario.style.width = '250px';
+            mudarDirecao = false;
             break;
         case 'hornet':
             marioGifPath = './_media/hornet.gif';
-            gameOverImagePath = `./_imagens/morte/game-over-hornet.png`;
-            mudarDirecao = true;
+            gameOverImagePath = `./_imagens/morte/game-over-mario.png`;
+            mudarDirecao = false;
+            gameBoard.style.backgroundImage = "url('_imagens/fundo_isadora.png')"
+            mario.style.width = '280px';
             break;
         default:
             console.warn(`Personagem '${personagem}' não reconhecido. Usando Mario padrão.`);
@@ -470,7 +485,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setTimeout(finishStartup, startupDisplayTime);
 });
-
+// const checkRoberto = checarCodigo(robertoCode, () => {
+//     mario.src = './_imagens/roberto.mp4';
+//     mario.style.transform = 'scaleX(1)';
+// });
 function secret () {
     switch (playerNick) {
 
@@ -481,18 +499,39 @@ function secret () {
         pipe.src = "_imagens/pipe_sherek-removebg-preview (1).png"
         gameBoard.style.backgroundImage = "url('_imagens/cenario_sherek.png')"
         pipe.style.width = "300px"
+        musicaMario.pause();
+        musicaMario = new Audio('./_media/_sons/all star.mp3');
+        musicaMario.play();
         break;
-
+// const robertoCode = ['r', 'o', 'b', 'e', 'r', 't', 'o'];
     case "roberto":
         video.muted = false
         video.style.display = "block"
-        break;
+        video.play();
+        video.style.width = "400px"
+        break
+        ;
 
     case "pacman":
         mario.src = "_imagens/pacman.webp"
         marioGifPath = "_imagens/pacman.webp"
         mario.style.width = "200px"
         pipe.src = "_imagens/fantasma_pacman2.gif"
+        gameBoard.style.backgroundImage = "url('_imagens/cenario-pacman.jpg')"
+        musicaMario.pause();
+        musicaMario = new Audio('./_media/_sons/som-pac.mp3');
+        musicaMario.play();
+        clouds.style.display = "none"
+        break;
+    case "kirby":
+        mario.src = "_imagens/kirby.gif"
+        marioGifPath = "_imagens/kirby.gif"
+        mario.style.width = "100px"
+        pipe.src = "_imagens/pipe.png"
+        gameBoard.style.backgroundImage = "url('_imagens/cenario-kirby.png')"
+        musicaMario.pause();
+        musicaMario = new Audio('./_media/_sons/kirby.mp3');
+        musicaMario.play();
         break;
     default:
         break;
