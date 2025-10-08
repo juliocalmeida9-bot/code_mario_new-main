@@ -13,6 +13,18 @@
 </head>
 
 <body>
+    <div class="container">
+    <!-- Campo de input para comandos secretos -->
+    <input type="text" id="comando" placeholder="Digite um comando secreto...">
+</div>
+
+<!-- Overlay que será exibido quando o comando "roberto" for digitado -->
+<div class="overlay" id="overlay">
+    <video id="meuVideo" width="640" height="360" autoplay muted playsinline>
+        <source src="_media/roberto.mp4" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo.
+    </video>
+</div>
 
     <div id="passioneScreen">
         <img id="startup-image" src="./_imagens/intro.png" alt="Tela de Abertura">
@@ -64,7 +76,7 @@
         </div>
 
         <div class="tela-jogar-denovo">
-            <h1>Voce deseja jogar outra vez?</h1>
+            <h1>Muito ruim KKKKKKK!!!</h1>
             <div id="Continuar-Reniciar">
                 <button class="Continuar" style="background-color: #44AF69; box-shadow: 0 4px #2a6f43;"
                     onclick="continuarReniciar('continuar')">Continuar</button>

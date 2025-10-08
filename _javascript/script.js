@@ -489,51 +489,71 @@ document.addEventListener('DOMContentLoaded', () => {
 //     mario.src = './_imagens/roberto.mp4';
 //     mario.style.transform = 'scaleX(1)';
 // });
-function secret () {
-    switch (playerNick) {
+function secret() {
+    const comandoInput = document.getElementById("comando");
+    const overlay = document.getElementById("overlay");
+    const meuVideo = document.getElementById("meuVideo");
 
-    case "shrek":
-        mario.src = "_imagens/shrek.gif"
-        marioGifPath = "_imagens/shrek.gif"
-        mario.style.width = "200px"
-        pipe.src = "_imagens/pipe_sherek-removebg-preview (1).png"
-        gameBoard.style.backgroundImage = "url('_imagens/cenario_sherek.png')"
-        pipe.style.width = "300px"
-        musicaMario.pause();
-        musicaMario = new Audio('./_media/_sons/all star.mp3');
-        musicaMario.play();
-        break;
-// const robertoCode = ['r', 'o', 'b', 'e', 'r', 't', 'o'];
-    case "roberto":
-        video.muted = false
-        video.style.display = "block"
-        video.play();
-        video.style.width = "400px"
-        break
-        ;
+    comandoInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            const playerNick = comandoInput.value.toLowerCase().trim();
 
-    case "pacman":
-        mario.src = "_imagens/pacman.webp"
-        marioGifPath = "_imagens/pacman.webp"
-        mario.style.width = "200px"
-        pipe.src = "_imagens/fantasma_pacman2.gif"
-        gameBoard.style.backgroundImage = "url('_imagens/cenario-pacman.jpg')"
-        musicaMario.pause();
-        musicaMario = new Audio('./_media/_sons/som-pac.mp3');
-        musicaMario.play();
-        clouds.style.display = "none"
-        break;
-    case "kirby":
-        mario.src = "_imagens/kirby.gif"
-        marioGifPath = "_imagens/kirby.gif"
-        mario.style.width = "100px"
-        pipe.src = "_imagens/pipe.png"
-        gameBoard.style.backgroundImage = "url('_imagens/cenario-kirby.png')"
-        musicaMario.pause();
-        musicaMario = new Audio('./_media/_sons/kirby.mp3');
-        musicaMario.play();
-        break;
-    default:
-        break;
-}
+            switch (playerNick) {
+                case "shrek":
+                    mario.src = "_imagens/shrek.gif";
+                    marioGifPath = "_imagens/shrek.gif";
+                    mario.style.width = "200px";
+                    pipe.src = "_imagens/pipe_sherek-removebg-preview (1).png";
+                    gameBoard.style.backgroundImage = "url('_imagens/cenario_sherek.png')";
+                    pipe.style.width = "300px";
+                    musicaMario.pause();
+                    musicaMario = new Audio('./_media/_sons/all star.mp3');
+                    musicaMario.play();
+                    break;
+
+                case "roberto":
+                    // Mostra a sobreposição e o vídeo
+                    overlay.classList.add("show-overlay");
+                    meuVideo.classList.add("show-video");
+
+                    // Recarrega o vídeo para garantir a reprodução
+                    meuVideo.load();
+
+                    // Quando o vídeo terminar, oculta os elementos
+                    meuVideo.addEventListener('ended', () => {
+                        overlay.classList.remove("show-overlay");
+                        meuVideo.classList.remove("show-video");
+                        comandoInput.value = ""; // Limpa o input
+                    }, { once: true });
+                    break;
+
+                case "pacman":
+                    mario.src = "_imagens/pacman.webp";
+                    marioGifPath = "_imagens/pacman.webp";
+                    mario.style.width = "200px";
+                    pipe.src = "_imagens/fantasma_pacman2.gif";
+                    gameBoard.style.backgroundImage = "url('_imagens/cenario-pacman.jpg')";
+                    musicaMario.pause();
+                    musicaMario = new Audio('./_media/_sons/som-pac.mp3');
+                    musicaMario.play();
+                    clouds.style.display = "none";
+                    break;
+
+                case "kirby":
+                    mario.src = "_imagens/kirby.gif";
+                    marioGifPath = "_imagens/kirby.gif";
+                    mario.style.width = "100px";
+                    pipe.src = "_imagens/pipe.png";
+                    gameBoard.style.backgroundImage = "url('_imagens/cenario-kirby.png')";
+                    musicaMario.pause();
+                    musicaMario = new Audio('./_media/_sons/kirby.mp3');
+                    musicaMario.play();
+                    break;
+
+                default:
+                    console.log("Comando não reconhecido.");
+                    break;
+            }
+        }
+    });
 }
